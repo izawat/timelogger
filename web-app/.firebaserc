@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "timelogger-4e48a"
+  },
+  "targets": {
+    "timelogger-4e48a": {
+      "hosting": {
+        "timelogger": [
+          "timelogger-4e48a"
+        ]
+      }
+    }
   }
 }
