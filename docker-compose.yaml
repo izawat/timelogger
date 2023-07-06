@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build: ./web-app
+    volumes:
+      - ./web-app:/app
+    ports:
+      - "4200:4200"
+      - "9005:9005" # firebaseログイン用
+    tty: true
+    stdin_open: true
+    command: ["/bin/bash"]
