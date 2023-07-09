@@ -1,0 +1,46 @@
+<ng-container *ngIf="timerGroup$ | async as timerGroup">
+  <ng-container *ngIf="loggerIsEditMode$ | async; else notEditModeBlock">
+    <div class="slot editMode">
+      <div class="timer-group-name">
+        <input class="edit-mode" [(ngModel)]="timerGroup.name" (blur)="changeTimerGroupName(timerGroup.name)" />
+      </div>
+      <div class="timers">
+        <ng-container *ngFor="let timer of timerGroup.timers; trackBy: trackByFn">
+          <div class="timer edit-mode">
+            <input class="edit-mode" [(ngModel)]="timer.name" (blur)="changeTimerName(timer.id, timer.name)" />
+            <div class="timer-count edit-mode" *ngIf="(refreshTrigger$ | async) || true">
+              {{elapsedSec(timer) | timeFormat}}
+              <fa-icon class="fa-delete-left" [icon]="faDeleteLeft" (click)="resetTimer(timer.id)"></fa-icon>
+            </div>
+            <div class="delete-timer">
+              <fa-icon class="fa-circle-xmark" [icon]="faCircleXmark" (click)="deleteTimer(timer.id)"></fa-icon>
+            </div>
+          </div>
+        </ng-container>
+        <div class="timer new-timer" (click)="addNewTimer()">
+          <fa-icon class="fa-plus" [icon]="faPlus"></fa-icon>
+        </div>
+      </div>
+      <div class="summary">{{elapsedSecSummary(timerGroup) | timeFormat}}</div>
+      <div class="delete-timer-group">
+        <fa-icon class="fa-trash-can" [icon]="faTrashCan" (click)="deleteTimerGroup(timerGroup.id)"></fa-icon>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #notEditModeBlock>
+    <div class="slot">
+      <div class="timer-group-name">{{timerGroup.name}}</div>
+      <div class="timers">
+        <ng-container *ngFor="let timer of timerGroup.timers; trackBy: trackByFn">
+          <div [ngClass]="{'timer': true, 'is-running': timer.isRunning}" (click)="clickTimer(timer)">
+            {{timer.name}}
+            <div class="timer-count" *ngIf="(refreshTrigger$ | async) || true">
+              {{elapsedSec(timer) | timeFormat}}
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="summary">{{elapsedSecSummary(timerGroup) | timeFormat}}</div>
+    </div>
+  </ng-template>
+</ng-container>

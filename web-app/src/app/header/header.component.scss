@@ -1,0 +1,73 @@
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+  z-index: 9999;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.login-btn-group {  // 新規追加：ボタングループのスタイル
+  display: flex;  // ボタンを横に並べるためのflexbox
+}
+
+.login-btn {
+  &:not(:last-child) {  // 新規追加：最後のボタン以外に右マージンを適用
+    margin-right: 10px;
+  }
+}
+
+.google-sign-in-btn {
+  width: 191px;
+  height: 46px;
+  background-image: url('../../assets/images/btn_google_signin_dark_normal_web.png');
+  background-size: cover;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-image: url('../../assets/images/btn_google_signin_dark_focus_web.png');
+  }
+
+  &:active {
+    background-image: url('../../assets/images/btn_google_signin_dark_pressed_web.png');
+  }
+}
+
+.anonym-sign-in-btn {
+  height: 41px;
+  font-weight: bold;
+  color: #525252;
+  background-size: cover;
+  border: solid 1px #ccc;
+  border-radius: 2px;
+  padding: 10px 20px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.logout-btn {
+  height: 41px;
+  font-weight: bold;
+  color: #525252;
+  background-size: cover;
+  border: solid 1px #ccc;
+  border-radius: 2px;
+  padding: 10px 20px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+

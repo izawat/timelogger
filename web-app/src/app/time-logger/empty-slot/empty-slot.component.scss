@@ -1,0 +1,60 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+
+  > *:not(:last-child) {
+    margin-right: 5px;
+  }
+
+  > .add-slot-btn {
+    flex-grow: 4;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: buttonface;
+
+    .fa-plus {
+      color: #525252;
+      margin-right: 5px;
+    }
+  }
+
+  > .enter-edit-mode-btn {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: buttonface;
+
+    .fa-pen-to-square {
+      color: #525252;
+      margin-right: 5px;
+    }
+  }
+
+  > .exit-edit-mode-btn {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    cursor: pointer;
+    border: 1px solid #28a745;
+    border-radius: 10px;
+    background-color: #fff;
+
+    .fa-circle-check {
+      color: #28a745;
+      margin-right: 5px;
+    }
+  }
+
+}
+

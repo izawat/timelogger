@@ -1,0 +1,19 @@
+<div class="container">
+  <ng-container *ngIf="timerGroups$ | async as timerGroups">
+    <div class="logger-slots">
+      <ng-container *ngFor="let timerGroup of timerGroups; trackBy: trackByFn">
+        <app-logger-slot [userId]="userId" [loggerId]="loggerId" [timerGroupId]="timerGroup.id"></app-logger-slot>
+      </ng-container>
+      <app-empty-slot [userId]="userId" [loggerId]="loggerId"></app-empty-slot>
+    </div>
+  </ng-container>
+  {{timerGroups$ | async | json}}
+
+  <footer>
+    <ng-container *ngIf="userDetail$ | async as userDetail">
+      <p>{{userDetail.name}} ({{userDetail.id}}/{{loggerId}})</p>
+    </ng-container>
+  </footer>
+</div>
+
+

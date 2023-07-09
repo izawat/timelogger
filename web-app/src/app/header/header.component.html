@@ -1,0 +1,14 @@
+<header class="header">
+  <h1 class="title">YOUR TIME LOGGER <fa-icon [icon]="faStopwatch"></fa-icon> β-version</h1>
+  <div class="login-btn-group">
+    <ng-container *ngIf="showLoginButton">
+      <button class="login-btn anonym-sign-in-btn" (click)="signInAnonymously()">
+        <span>ログインせずに使ってみる</span>
+      </button>
+      <button class="login-btn google-sign-in-btn" (click)="signInWithGoogle()"></button>
+    </ng-container>
+    <ng-container *ngIf="showLogoutButton">
+      <button class="login-btn logout-btn" (click)="logout()">ログアウト</button>
+    </ng-container>
+  </div>
+</header>

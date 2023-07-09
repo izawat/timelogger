@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="add-slot-btn" (click)="addSlot()" title="新しいスロットを追加します">
+    <fa-icon class="fa-plus" [icon]="faPlus"></fa-icon><span>追加</span>
+  </div>
+  <ng-container *ngIf="loggerIsEditMode$ | async; else isNotEditModeBlock">
+    <div class="exit-edit-mode-btn" (click)="exitEditMode()" title="編集モードを終えます">
+      <fa-icon class="fa-circle-check" [icon]="faCircleCheck"></fa-icon><span>確定</span>
+    </div>
+  </ng-container>
+  <ng-template #isNotEditModeBlock>
+    <div class="enter-edit-mode-btn" (click)="enterEditMode()" title="編集モードに入ります">
+      <fa-icon class="fa-pen-to-square" [icon]="faPenToSquare"></fa-icon><span>編集</span>
+    </div>
+  </ng-template>
+</div>
+

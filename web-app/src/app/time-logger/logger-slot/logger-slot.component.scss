@@ -1,0 +1,131 @@
+.slot {
+  // 全体のスタイル
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+
+  border-bottom: 1px solid #ccc;
+
+  > .timer-group-name {
+    width: 200px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+    padding-right: 10px;
+
+    .edit-mode {
+      width: 100%;
+      font-size: 20px;
+      font-weight: bold;
+      background: none;
+      border: none;
+      border-bottom: 1px dashed #ccc;
+    }
+  }
+
+  > .timers {
+    // slotの子要素としてのスタイル
+    flex-grow: 2; // 左右よりも中央を広くする
+
+    // timerの親としてのスタイル
+    display: flex;
+    flex-wrap: wrap;
+
+    > .timer {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      padding: 20px;
+      margin-bottom: 10px;
+      font-size: 30px;
+      font-weight: bold;
+      background-color: buttonface;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+      > .timer-count {
+        border-top: 1px solid #ccc;
+        font-size: 16px;
+        font-weight: normal;
+        text-align: center;
+
+        &.edit-mode {
+          border-top: none;
+          >.fa-delete-left {
+            cursor: pointer;
+          }
+        }
+      }
+
+      &.is-running {
+        border-color: #a80000;
+        background-color: #ffdddd;
+        color: #ff0000;
+
+        > .timer-count {
+          border-color: #ff9999;
+        }
+      }
+
+      &.edit-mode {
+        cursor: default;
+        position: relative;
+
+        >.delete-timer {
+          position: absolute;
+          top: -14px;
+          right: 0px;
+
+          >.fa-circle-xmark {
+            font-size: 25px;
+            font-weight: bold;
+            color: #a80000;
+            cursor: pointer;
+          }
+        }
+      }
+
+      > input.edit-mode {
+        width: 100px;
+        font-size: 30px;
+        font-weight: bold;
+        background: none;
+        border: none;
+        border-bottom: 1px dashed #ccc;
+        cursor: text;
+      }
+
+      &.new-timer {
+        width: 77px;
+        height: 116px;
+        font-size: 20px;
+        border: 1px dashed #ccc;
+        color: #525252;
+        text-align: center;
+      }
+    }
+  }
+
+  > .summary {
+    font-size: 20px;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid #ccc;
+  }
+
+  > .delete-timer-group {
+    font-size: 20px;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid #ccc;
+    color: #a80000;
+    cursor: pointer;
+  }
+}
