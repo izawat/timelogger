@@ -41,17 +41,30 @@ export class TimeLoggerService {
     const timeLogger = new TimeLogger();
     timeLogger.id = loggerId;
     timeLogger.name = loggerName;
+    timeLogger.isEditMode = false;
+    timeLogger.timerGroups = [TimerGroup.defaultTimerGroup()];
     timeLogger.createdAt = createdAt;
-    console.log(timeLogger);
+
     this.db
       .object(`${this.dbPath}/${userId}/${loggerId}`)
-      .update(timeLogger)
+      .update({
+        id: timeLogger.id,
+        name: timeLogger.name,
+        isEditMode: timeLogger.isEditMode,
+        createdAt: timeLogger.createdAt,
+      })
       .then(() => {
         console.log('initTimeLogger success');
       })
       .catch((error) => {
         console.error('initTimeLogger error', error);
       });
+    // 初期セットするタイマーグループがあれば追加する
+    if (timeLogger.timerGroups && timeLogger.timerGroups.length > 0) {
+      timeLogger.timerGroups.forEach((timerGroup) => {
+        this.addTimerGroup(userId, loggerId, timerGroup);
+      });
+    }
   }
 
   /**
