@@ -2,6 +2,22 @@
   /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
   "rules": {
     ".read": false,
-    ".write": false
+    ".write": false,
+    "userDetails": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$user_id": {
+        ".read": "$user_id === auth.uid",
+        ".write": "$user_id === auth.uid"
+      }
+    },
+    "timeLoggers": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$user_id": {
+        ".read": "$user_id === auth.uid",
+        ".write": "$user_id === auth.uid"
+      }
+    }
   }
 }
