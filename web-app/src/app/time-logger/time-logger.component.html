@@ -1,5 +1,5 @@
 <div class="container">
-  <ng-container *ngIf="timerGroups$ | async as timerGroups">
+  <ng-container *ngIf="timerGroups$ | async as timerGroups; else loadingBlock">
     <div class="logger-slots">
       <ng-container *ngFor="let timerGroup of timerGroups; trackBy: trackByFn">
         <app-logger-slot [userId]="userId" [loggerId]="loggerId" [timerGroupId]="timerGroup.id"></app-logger-slot>
@@ -7,7 +7,11 @@
       <app-empty-slot [userId]="userId" [loggerId]="loggerId"></app-empty-slot>
     </div>
   </ng-container>
-  {{timerGroups$ | async | json}}
+  <ng-template #loadingBlock>
+    <div class="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 
   <footer>
     <ng-container *ngIf="userDetail$ | async as userDetail">

@@ -8,6 +8,7 @@ import { EmptySlotComponent } from './empty-slot/empty-slot.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [TimeLoggerComponent, LoggerSlotComponent, EmptySlotComponent],
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     FontAwesomeModule,
     TimeLoggerRoutingModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class TimeLoggerModule {}
